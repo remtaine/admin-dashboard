@@ -1,23 +1,38 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 
 :root {
-    --color1: #F3F3F3;
+    /* --color1: #F3F3F3;
     --color2: #0F0F0F;
     --color3: #F0572F;
-    --color4: #F6BA1E;
+    --color4: #F6BA1E; */
 
+    --color1: #FFFFFF;
+    --color2: #01161E;
+    --color3: #00B8A9;
+    --color4: #F6416C;
+    /* --color5: #FFDE7D; */
+    --color6: #F6F4F3;
+    --color7: #F2C14E;
+    
     --anim-duration: 0.3s;
-    /* --color5: #000000; */
 
-    --color-bg: var(--color1, white);
+    --color-bg: var(--color6, white);
+    --color-bg2: var(--color1, grey);
     --color-font: var(--color2, black);
-    --color-spec1: var(--color3, orange);
-    --color-spec2: var(--color4, yellow);
+    --color-spec1: var(--color3, blue);
+    /* --color-spec2: var(--color5, yellow); */
+    --color-spec3: var(--color4, red);
+    --color-spec2: var(--color7, orange);
 
     background-color: var(--color-bg);
     font-family: 'Inter', sans-serif; 
     font-weight: regular;
     /* inter uses bold and regular */
+}
+
+:root *::selection {
+    background: var(--color-spec1);
+    color: var(--color-bg2);
 }
 
 
@@ -75,7 +90,7 @@ header {
 }
 
 .symbol:hover .logo {
-    background-color: var(--color-font);
+    background-color: var(--color-spec2);
 }
 
 .logo span {
@@ -92,13 +107,13 @@ header {
 .logo span:nth-child(2) {
     grid-row-start: 1;
     grid-row-end: span 3;
-    background-color: var(--color-spec2);
+    background-color: var(--color-spec3);
 }
 
 .logo span:nth-child(3) {
     grid-row-start: 3;
     grid-row-end: span 3;
-    background-color: var(--color-spec2);
+    background-color: var(--color-spec3);
 }
 
 .logo span:nth-child(4) {
@@ -130,7 +145,7 @@ header {
     background-color: var(--color-font);
 }
 
-main {
+main > *:not(:first-child) {
     padding: 10px;
 }
 .search-bar {
@@ -145,6 +160,10 @@ main {
     height: 24px;
 }
 
+.search-bar input {
+    background-color: var(--color-bg2);
+}
+
 .search-bar i {
     font-size: 1rem;
     color: var(--color-font);
@@ -154,9 +173,15 @@ main {
     border-radius: 20px;
     border-style: solid;
     border-color: var(--color-font);
+    text-align: center;
 }
 
-.person {
+.persona {
+    box-shadow: var(--color-font) 0 5px 10px -10px;
+    padding-bottom: 10px;
+}
+
+.persona .person {
     display: flex;
     justify-content: center;
     gap: 10px;
@@ -170,13 +195,13 @@ main {
 
 .person .text .name {
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: var(--color-spec1);
     /* text-shadow: 1px 1px 1px var(--color-font); */
 }
 
 .avatar {
-    background-color: var(--color-spec2);
+    background-color: var(--color-spec3);
     /* padding: 5px; */
     border-radius: 100px;
     border-width: 0;
@@ -193,7 +218,27 @@ main {
     height: 90%;
 }
 
-.card-container {
+.person-actions {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px;
+}
+
+.person-actions button {
+    border-style: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    background-color: var(--color-spec2);
+    transition: background-color var(--anim-duration), color var(--anim-duration);
+}
+
+.person-actions button:hover {
+    color: var(--color-bg);
+    background-color: var(--color-spec1);
+}
+
+.card-container  {
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, var(--color-font) 0px 1px 3px -1px;
     width: 100%;
     height: clamp(200px, 200px, auto);
@@ -209,7 +254,7 @@ h3 {
     font-weight: bold;
 }
 
-.card {
+.card-container .card {
     margin-left: auto;
     background-color: var(--color-bg);
     width: 92%;
@@ -224,20 +269,26 @@ h3 {
 }
 
 @media screen and (min-width: 600px) {
-    .card {
+    .card-container .card {
         width: 95%;
     }    
 }
 
 @media screen and (min-width: 900px) {
-    .card {
+    .card-container .card {
         width: 96%;
     }    
 }
 
 @media screen and (min-width: 1200px) {
-    .card {
+    .card-container .card {
         width: 97%;
+    }    
+}
+
+@media screen and (min-width: 1500px) {
+    .card-container .card {
+        width: 98%;
     }    
 }
 
@@ -260,8 +311,12 @@ h3 {
 }
 
 .card-actions button:hover {
-    background-color: var(--color-spec1);
+    background-color: var(--color-spec3);
     color: var(--color-bg);
+}
+
+.projects {
+    /* grid-template-columns: repeat(auto-fit, minmax(60px, 1fr)); */
 }
 
 .projects .cards {
@@ -269,4 +324,90 @@ h3 {
     flex-direction: column;   
     align-items: center;
     gap: 20px;
+}
+
+.announcements .card {
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, var(--color-font) 0px 1px 3px -1px;
+    padding: 20px;
+    border-radius: 10px;
+    text-overflow: ellipsis;
+    /* height: 200px; */
+}
+
+.announcements .card p:not(:last-child) {
+    border-bottom-color: var(--color-font);
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    padding-bottom: 20px;
+}
+
+.announcements .card p:last-child {
+    margin-bottom: 0;
+}
+
+.persons {
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    /* justify-content: center; */
+
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, var(--color-font) 0px 1px 3px -1px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.persons .person {
+    display: flex;
+    /* justify-content: space-between; */
+    gap: 10px;
+    padding: auto;
+    font-size: 1.4rem;
+}
+
+.persons .person .text {
+    display: flex;
+    gap: 10px;
+    padding: auto;
+    font-size: 1.4rem;
+}
+.persons .person .name {
+    font-size: 1.5rem;
+}
+.persons .person:not(:last-child) {
+    border-bottom-color: var(--color-font);
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    padding-bottom: 20px;
+}
+
+.persons .person:nth-child(3n) .avatar {
+    background-color: var(--color-spec1);
+}
+
+.persons .person:nth-child(3n + 1) .avatar {
+    background-color: var(--color-spec2);
+}
+
+.persons .person:nth-child(3n + 2) .avatar {
+    background-color: var(--color-spec3);
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    padding-bottom: 10px;
+}
+
+footer a {
+    padding: 0 5px;
+    text-decoration: none;
+    color: var(--color-spec3);
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer a:visited {
+    /* color: var(--color-font); */
 }
